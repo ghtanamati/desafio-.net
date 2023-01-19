@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gustavo.tanamati\\Downloads\\SistemaVendas\\SistemaVendas.csproj": {}
+    "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gustavo.tanamati\\Downloads\\SistemaVendas\\SistemaVendas.csproj": {
+    "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gustavo.tanamati\\Downloads\\SistemaVendas\\SistemaVendas.csproj",
+        "projectUniqueName": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj",
         "projectName": "SistemaVendas",
-        "projectPath": "C:\\Users\\gustavo.tanamati\\Downloads\\SistemaVendas\\SistemaVendas.csproj",
+        "projectPath": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj",
         "packagesPath": "C:\\Users\\gustavo.tanamati\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gustavo.tanamati\\Downloads\\SistemaVendas\\obj\\",
+        "outputPath": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gustavo.tanamati\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -48,7 +48,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.1, )"
+              "version": "[7.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
