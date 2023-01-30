@@ -19,7 +19,7 @@ namespace SistemaVendas.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Senha = table.Column<int>(type: "int", nullable: false)
+                    Senha = table.Column<int>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +48,7 @@ namespace SistemaVendas.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Senha = table.Column<int>(type: "int", nullable: false)
+                    Senha = table.Column<int>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

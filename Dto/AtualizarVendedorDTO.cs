@@ -9,6 +9,6 @@ namespace SistemaVendas.Dto
     {
         public string Nome { get; set; }
         public string Login { get; set; }
-        public int Senha { get; set; }
+        public string Senha { get; set; }
     }
 }

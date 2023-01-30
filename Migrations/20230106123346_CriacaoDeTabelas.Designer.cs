@@ -42,7 +42,7 @@ namespace SistemaVendas.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Senha")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -142,7 +142,7 @@ namespace SistemaVendas.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Senha")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

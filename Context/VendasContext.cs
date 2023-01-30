@@ -13,6 +13,7 @@ namespace SistemaVendas.Context
         {
             
         }
+        //Propriedades que representam as tabelas
         public DbSet<Cliente> Clientes {get; set;}
         public DbSet<ItemPedido> ItensPedidos {get; set;}
         public DbSet<Pedido> Pedidos {get; set;}
