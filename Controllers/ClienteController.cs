@@ -27,5 +27,84 @@ namespace SistemaVendas.Controllers
             _repository.Cadastrar(cliente);
             return Ok();
         }
+
+        [HttpGet("ObterPorID/{id}")]
+        public IActionResult ObterPorId(int id)
+        {
+            var cliente = _repository.ObterPorId(id);
+            
+            if (cliente is not null)
+            {
+                return Ok(cliente);
+            }    
+            else
+            {
+                return NotFound(new { Mensagem = "Não foi encontrado um cliente com este ID"});
+            }
+        }
+
+        [HttpGet("ObterPorNome/{nome}")]
+        public IActionResult ObterPorCliente(string nome)
+        {
+            var cliente = _repository.ObterPorNome(nome);
+            
+            if (cliente is not null)
+            {
+                return Ok(cliente);
+            }    
+            else
+            {
+                return NotFound(new { Mensagem = "Não foram encontrados clientes com este nome"});
+            }
+        }
+
+        [HttpPut("AtualizarCliente/{id}")]
+        public IActionResult AtualizarCliente(int id, AtualizarClienteDTO dto)
+        {
+            var cliente = _repository.ObterPorId(id);
+
+            if (cliente is not null)
+            {
+                cliente.MapearAtualizarCliente(dto);
+                _repository.AtualizarCliente(cliente);
+                return Ok(cliente);
+            }
+            else
+            {
+                return NotFound (new {Mensagem = "Não foi encontrado um cliente com este ID"});
+            }
+        }
+
+        [HttpPatch("AtualizarSenha/{id}")]
+        public IActionResult AtualizarSenha(int id, AtualizarSenhaClienteDTO dto)
+        {
+            var cliente = _repository.ObterPorId(id);
+
+            if (cliente is not null)
+            {
+                _repository.AtualizarSenha(cliente, dto);
+                return Ok(cliente);
+            }
+            else
+            {
+                return NotFound(new { Mensagem = "Não foi encontrado um cliente com este ID"});
+            }
+        }
+
+        [HttpDelete("DeletarCliente/{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var cliente = _repository.ObterPorId(id);
+            
+            if (cliente is not null)
+            {
+                _repository.DeletarPedido(cliente);
+                return Ok("Cliente deletado com sucesso");
+            }
+            else
+            {
+                return NotFound (new {Mensagem = "Não foi encontrado um cliente com este ID"});
+            }
+        }
     }
 }

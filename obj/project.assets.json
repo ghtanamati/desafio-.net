@@ -3878,11 +3878,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj",
+      "projectUniqueName": "C:\\Users\\gustavo.tanamati\\source\\repos\\desafio-dotnet\\SistemaVendas.csproj",
       "projectName": "SistemaVendas",
-      "projectPath": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj",
+      "projectPath": "C:\\Users\\gustavo.tanamati\\source\\repos\\desafio-dotnet\\SistemaVendas.csproj",
       "packagesPath": "C:\\Users\\gustavo.tanamati\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\obj\\",
+      "outputPath": "C:\\Users\\gustavo.tanamati\\source\\repos\\desafio-dotnet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gustavo.tanamati\\AppData\\Roaming\\NuGet\\NuGet.Config",

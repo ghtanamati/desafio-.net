@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xwI7RLmXjs/X5oagr4oKQDA0XRxfiFp0eonMyVYSAOHBajf7rdW/Elm7p6j24kdCMVUZGjSRW9vQwWOfNNMXIw==",
+  "dgSpecHash": "/a66a9M9LYb+cD3xaNbuXbGBOyG1U8MZEHxyE3YaGZOaRvzOl29mGwUXq9A0Bn5YnULE8+rxGnHb3gD3s9V/9g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gustavo.tanamati\\source\\repos\\SistemaVendas\\SistemaVendas.csproj",
+  "projectFilePath": "C:\\Users\\gustavo.tanamati\\source\\repos\\desafio-dotnet\\SistemaVendas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gustavo.tanamati\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\gustavo.tanamati\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

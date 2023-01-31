@@ -23,5 +23,12 @@ namespace SistemaVendas.Models
             Login = dto.Login;
             Senha = dto.Senha;
         }
+
+        public void MapearAtualizarCliente(AtualizarClienteDTO dto)
+        {
+            Nome = dto.Nome;
+            Login = dto.Login;
+            Senha = dto.Senha;
+        }
     }
 }

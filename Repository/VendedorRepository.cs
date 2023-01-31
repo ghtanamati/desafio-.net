@@ -11,6 +11,7 @@ namespace SistemaVendas.Repository
 {
     public class VendedorRepository
     {
+        //Injeção de Dependência
         private readonly VendasContext _context;
 
         public VendedorRepository(VendasContext context)
@@ -29,6 +30,8 @@ namespace SistemaVendas.Repository
             var vendedor = _context.Vendedores.Find(id);
             return vendedor;
         }
+
+        //Como o NOME não é necessariamente único, a consulta pode retornar uma lista
         public List<ObterVendedorDTO> ObterPorNome(string nome)
         {
             var vendedores = _context.Vendedores.Where(x => x.Nome.Contains(nome))
@@ -42,17 +45,15 @@ namespace SistemaVendas.Repository
             _context.SaveChanges();
             return vendedor;
         }
-
-        public void DeletarVendedor(Vendedor vendedor)
-        {
-            _context.Vendedores.Remove(vendedor);
-            _context.SaveChanges();
-        }
-
         public void AtualizarSenha(Vendedor vendedor, AtualizarSenhaVendedorDTO dto)
         {
             vendedor.Senha = dto.Senha;
             AtualizarVendedor(vendedor);
+        }
+        public void DeletarVendedor(Vendedor vendedor)
+        {
+            _context.Vendedores.Remove(vendedor);
+            _context.SaveChanges();
         }
     }
 }

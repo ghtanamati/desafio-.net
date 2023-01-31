@@ -29,7 +29,7 @@ namespace SistemaVendas.Controllers
             return Ok(vendedor);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("ObterPorID/{id}")]
         public IActionResult ObterPorId(int id)
         {
             var vendedor = _repository.ObterPorId(id);
@@ -41,7 +41,7 @@ namespace SistemaVendas.Controllers
             }
             else
             {
-                return NotFound(new { Mensagem = "Vendedor não encontrado"});
+                return NotFound(new { Mensagem = "Não foi encontrado um vendedor com este id"});
             }
         }
         
@@ -49,10 +49,18 @@ namespace SistemaVendas.Controllers
         public IActionResult ObterPorNome(string nome)
         {
             var vendedores = _repository.ObterPorNome(nome);
-            return Ok(vendedores);
+            
+            if(vendedores is not null)
+            {
+                return Ok(vendedores);
+            }
+            else
+            {
+                return NotFound(new { Mensagem = "Não foram encontrados vendedores com este nome"});
+            }
         }
         
-        [HttpPut("{id}")]
+        [HttpPut("AtualizarVendedor/{id}")]
         public IActionResult Atualizar(int id, AtualizarVendedorDTO dto)
         {
             var vendedor = _repository.ObterPorId(id);
@@ -65,27 +73,11 @@ namespace SistemaVendas.Controllers
             }
             else
             {
-                return NotFound (new {Mensagem = "Vendedor não encontrado"});
+                return NotFound (new {Mensagem = "Não foi encontrado um vendedor com este ID"});
             }
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Deletar(int id)
-        {
-            var vendedor = _repository.ObterPorId(id);
-            
-            if (vendedor is not null)
-            {
-                _repository.DeletarVendedor(vendedor);
-                return Ok("Vendedor deletado com sucesso");
-            }
-            else
-            {
-                return NotFound (new {Mensagem = "Vendedor não encontrado"});
-            }
-        }
-
-        [HttpPatch("{id}")]
+        [HttpPatch("AtualizarSenha/{id}")]
         public IActionResult AtualizarSenha(int id, AtualizarSenhaVendedorDTO dto)
         {
             var vendedor = _repository.ObterPorId(id);
@@ -97,7 +89,23 @@ namespace SistemaVendas.Controllers
             }
             else
             {
-                return NotFound(new { Mensagem = "Vendedor não encontrado"});
+                return NotFound(new { Mensagem = "Não foi encontrado um vendedor com este ID"});
+            }
+        }
+
+        [HttpDelete("DeletarVendedor/{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var vendedor = _repository.ObterPorId(id);
+            
+            if (vendedor is not null)
+            {
+                _repository.DeletarVendedor(vendedor);
+                return Ok("Vendedor deletado com sucesso");
+            }
+            else
+            {
+                return NotFound (new {Mensagem = "Não foi encontrado um vendedor com este ID"});
             }
         }
     }
