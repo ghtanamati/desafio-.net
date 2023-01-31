@@ -79,7 +79,6 @@ namespace SistemaVendas.Controllers
         public IActionResult AtualizarSenha(int id, AtualizarSenhaClienteDTO dto)
         {
             var cliente = _repository.ObterPorId(id);
-
             if (cliente is not null)
             {
                 _repository.AtualizarSenha(cliente, dto);
