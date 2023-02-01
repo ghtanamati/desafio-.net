@@ -8,6 +8,6 @@ namespace SistemaVendas.Dto
 {
     public class AtualizarVendedorDoPedidoDTO
     {
-        public Vendedor Vendedor { get; set; } 
+        public int VendedorId { get; set; }
     }
 }

@@ -11,26 +11,23 @@ namespace SistemaVendas.Repository
 {
     public class VendedorRepository
     {
-        //Injeção de Dependência
+        //Injeção de Dependência (Start)
         private readonly VendasContext _context;
-
         public VendedorRepository(VendasContext context)
         {
             _context = context;
         }
-
+        //Injeção de Dependência (End)
         public void Cadastrar(Vendedor vendedor)
         {
             _context.Vendedores.Add(vendedor);
             _context.SaveChanges();
         }
-
         public Vendedor ObterPorId(int id)
         {
             var vendedor = _context.Vendedores.Find(id);
             return vendedor;
         }
-
         //Como o NOME não é necessariamente único, a consulta pode retornar uma lista
         public List<ObterVendedorDTO> ObterPorNome(string nome)
         {

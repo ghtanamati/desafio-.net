@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace SistemaVendas.Dto
 {
-    //Data Transfer Object
     public class CadastrarVendedorDTO
     {
         public string Nome { get; set; }

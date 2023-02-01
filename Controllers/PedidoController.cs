@@ -13,19 +13,19 @@ namespace SistemaVendas.Controllers
     [Route("[controller]")]
     public class PedidoController : ControllerBase
     {
-        //Injeção de Dependência
+        //Injeção de Dependência (Start)
         private readonly PedidoRepository _repository;
         public PedidoController(PedidoRepository repository)
         {
             _repository = repository;
         }
-
+        //Injeção de Dependência (End)
         [HttpPost]
         public IActionResult Cadastrar(CadastrarPedidoDTO dto)
         {
             var pedido = new Pedido(dto);
             _repository.Cadastrar(pedido);
-            return Ok(pedido);
+            return Ok(dto);
         }
 
         [HttpGet("ObterPorID/{id}")]
@@ -44,7 +44,7 @@ namespace SistemaVendas.Controllers
         }
 
         [HttpGet("ObterPorCliente/{cliente}")]
-        public IActionResult ObterPorCliente(Cliente cliente)
+        public IActionResult ObterPorCliente(string cliente)
         {
             var pedido = _repository.ObterPorCliente(cliente);            
             if (pedido is not null)
@@ -58,7 +58,7 @@ namespace SistemaVendas.Controllers
         }
 
         [HttpGet("ObterPorVendedor/{vendedor}")]
-        public IActionResult ObterPorVendedor(Vendedor vendedor)
+        public IActionResult ObterPorVendedor(string vendedor)
         {
             var pedido = _repository.ObterPorVendedor(vendedor);            
             if (pedido is not null)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SistemaVendas.Context;
+using SistemaVendas.Controllers;
 using SistemaVendas.Dto;
 using SistemaVendas.Models;
 
@@ -30,10 +31,12 @@ namespace SistemaVendas.Repository
             return cliente;
         }
 
-        public Cliente ObterPorNome(string nome)
+        public List<ObterClienteDTO> ObterPorNome(string nome)
         {
-            var cliente = _context.Clientes.Find(nome);
-            return cliente;
+            var clientes = _context.Clientes.Where(x => x.Nome.Contains(nome))
+                                            .Select(x => new ObterClienteDTO(x))
+                                            .ToList();
+            return clientes;
         }
 
         public Cliente AtualizarCliente(Cliente cliente)

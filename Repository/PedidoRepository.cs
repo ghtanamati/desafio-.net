@@ -13,7 +13,6 @@ namespace SistemaVendas.Repository
     public class PedidoRepository
     {
         private readonly VendasContext _context;
-
         public PedidoRepository(VendasContext context)
         {
             _context = context;
@@ -26,7 +25,6 @@ namespace SistemaVendas.Repository
 
             return pedido;
         }
-
         public Pedido ObterPorId(int id)
         {
             var pedido = _context.Pedidos.Include(x => x.Vendedor)
@@ -34,33 +32,29 @@ namespace SistemaVendas.Repository
                                          .FirstOrDefault(x => x.Id == id);
             return pedido;
         }
-
-        public Pedido ObterPorCliente(Cliente cliente)
+        public Pedido ObterPorCliente(string cliente)
         {
             var pedido = _context.Pedidos.Include(x => x.Vendedor)
                                          .Include(x => x.Cliente)
-                                         .FirstOrDefault(x => x.Cliente == cliente);
+                                         .FirstOrDefault(x => x.Cliente.Nome == cliente);
             return pedido;
         }
-
-        public Pedido ObterPorVendedor(Vendedor vendedor)
+        public Pedido ObterPorVendedor(string vendedor)
         {
             var pedido = _context.Pedidos.Include(x => x.Vendedor)
                                          .Include(x => x.Cliente)
-                                         .FirstOrDefault(x => x.Vendedor == vendedor);
+                                         .FirstOrDefault(x => x.Vendedor.Nome == vendedor);
             return pedido;
         }
-
         public Pedido AtualizarPedido(Pedido pedido)
         {
             _context.Pedidos.Update(pedido);
             _context.SaveChanges();
             return pedido;
         }
-
         public void AtualizarVendedor(Pedido pedido, AtualizarVendedorDoPedidoDTO dto)
         {
-            pedido.Vendedor = dto.Vendedor;
+            pedido.VendedorId = dto.VendedorId;
             AtualizarPedido(pedido);
         }
 

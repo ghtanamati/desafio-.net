@@ -23,25 +23,25 @@ namespace SistemaVendas.Controllers
         {
             var itemPedido = new ItemPedido(dto);
             _repository.Cadastrar(itemPedido);
-            return Ok();
+            return Ok(dto);
         }
-        [HttpGet("ObterPorID/{id}")]
-        public IActionResult ObterPorId(int id)
+        [HttpGet("ObterPorServico/{idServico}")]
+        public IActionResult ObterPorServico(int idServico)
         {
-            var itemPedido = _repository.ObterPorId(id);          
+            var itemPedido = _repository.ObterPorServico(idServico);
             if (itemPedido is not null)
             {
                 return Ok(itemPedido);
             }    
             else
             {
-                return NotFound(new { Mensagem = "Não foi encontrado um item pedido com este ID"});
+                return NotFound(new { Mensagem = "Não foram encontrados itens pedidos com este serviço"});
             }
         }
-        [HttpGet("ObterPorServico/{nome}")]
-        public IActionResult ObterPorServico(string servico)
+        [HttpGet("ObterPorIDPedido/{idPedido}")]
+        public IActionResult ObterPorPedido(int idPedido)
         {
-            var itemPedido = _repository.ObterPorServico(servico);
+            var itemPedido = _repository.ObterPorPedido(idPedido);
             if (itemPedido is not null)
             {
                 return Ok(itemPedido);

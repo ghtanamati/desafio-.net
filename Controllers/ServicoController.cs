@@ -18,13 +18,12 @@ namespace SistemaVendas.Controllers
         {
             _repository = repository;
         }
-
         [HttpPost]
         public IActionResult Cadastrar(CadastrarServicoDTO dto)
         {
             var servico = new Servico(dto);
             _repository.Cadastrar(servico);
-            return Ok();
+            return Ok(servico);
         }
 
         [HttpGet("ObterPorID/{id}")]
@@ -44,11 +43,11 @@ namespace SistemaVendas.Controllers
         [HttpGet("ObterPorNome/{nome}")]
         public IActionResult ObterPorNome(string nome)
         {
-            var servico = _repository.ObterPorNome(nome);            
-            if (servico is not null)
+            var servicos = _repository.ObterPorNome(nome);
+            if(servicos is not null)
             {
-                return Ok(servico);
-            }    
+                return Ok(servicos);
+            }
             else
             {
                 return NotFound(new { Mensagem = "Não foram encontrados serviços com este nome"});

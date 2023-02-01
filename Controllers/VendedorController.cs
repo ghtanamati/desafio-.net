@@ -15,12 +15,10 @@ namespace SistemaVendas.Controllers
     {
         //Injeção de Dependência
         private readonly VendedorRepository _repository;
-
         public VendedorController(VendedorRepository repository)
         {
             _repository = repository;
         }
-
         [HttpPost]
         public IActionResult Cadastrar(CadastrarVendedorDTO dto)
         {
@@ -49,7 +47,6 @@ namespace SistemaVendas.Controllers
         public IActionResult ObterPorNome(string nome)
         {
             var vendedores = _repository.ObterPorNome(nome);
-            
             if(vendedores is not null)
             {
                 return Ok(vendedores);

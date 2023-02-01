@@ -47,7 +47,6 @@ namespace SistemaVendas.Controllers
         public IActionResult ObterPorCliente(string nome)
         {
             var cliente = _repository.ObterPorNome(nome);
-            
             if (cliente is not null)
             {
                 return Ok(cliente);

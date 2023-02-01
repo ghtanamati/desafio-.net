@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SistemaVendas.Controllers;
 using SistemaVendas.Context;
 using SistemaVendas.Dto;
 using SistemaVendas.Models;
@@ -26,10 +27,12 @@ namespace SistemaVendas.Repository
             var servico = _context.Servicos.Find(id);
             return servico;
         }
-        public Servico ObterPorNome(string nome)
+        public List<ObterServicoDTO> ObterPorNome(string nome)
         {
-            var servico = _context.Servicos.Find(nome);
-            return servico;
+            var servicos = _context.Servicos.Where(x => x.Nome.Contains(nome))
+                                                .Select(x => new ObterServicoDTO(x))
+                                                .ToList();
+            return servicos;
         }
         public Servico AtualizarServico(Servico servico)
         {

@@ -16,7 +16,6 @@ namespace SistemaVendas.Models
         public Cliente Cliente { get; set; }
         public Pedido()
         {
-            
         }
         public Pedido(CadastrarPedidoDTO dto)
         {

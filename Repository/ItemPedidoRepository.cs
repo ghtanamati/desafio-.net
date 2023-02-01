@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SistemaVendas.Context;
+using SistemaVendas.Controllers;
 using SistemaVendas.Dto;
 using SistemaVendas.Models;
 
@@ -23,19 +25,27 @@ namespace SistemaVendas.Repository
             _context.ItensPedidos.Add(itemPedido);
             _context.SaveChanges();
         }
-
         public ItemPedido ObterPorId(int id)
         {
             var itemPedido = _context.ItensPedidos.Find(id);
             return itemPedido;
         }
-
-        public ItemPedido ObterPorServico(string servico)
+        public List<ObterItemPedidoDTO> ObterPorServico(int idServico)
         {
-            var itemPedido = _context.ItensPedidos.Find(servico);
-            return itemPedido;
+            var itensPedido = _context.ItensPedidos.Where(x => x.Servico.Id == idServico)
+                                                  .Select(x => new ObterItemPedidoDTO(x))
+                                                  .ToList();
+            
+            return itensPedido;
         }
-
+        public List<ObterItemPedidoDTO> ObterPorPedido(int idPedido)
+        {
+            var itensPedido = _context.ItensPedidos.Where(x => x.Pedido.Id == idPedido)
+                                                  .Select(x => new ObterItemPedidoDTO(x))
+                                                  .ToList();
+            
+            return itensPedido;
+        }
         public ItemPedido AtualizarItemPedido(ItemPedido itemPedido)
         {
             _context.ItensPedidos.Update(itemPedido);
