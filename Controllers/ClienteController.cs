@@ -14,49 +14,45 @@ namespace SistemaVendas.Controllers
     public class ClienteController : ControllerBase
     {
         private readonly ClienteRepository _repository;
-
         public ClienteController(ClienteRepository repository)
         {
             _repository = repository;
         }
-
         [HttpPost]
         public IActionResult Cadastrar(CadastrarClienteDTO dto)
         {
             var cliente = new Cliente(dto);
             _repository.Cadastrar(cliente);
-            return Ok();
+            return Ok(cliente);
         }
-
         [HttpGet("ObterPorID/{id}")]
         public IActionResult ObterPorId(int id)
         {
             var cliente = _repository.ObterPorId(id);
-            
             if (cliente is not null)
             {
-                return Ok(cliente);
+                var clienteDTO = new ObterClienteDTO(cliente)
+                return Ok(clienteDTO);
             }    
             else
             {
                 return NotFound(new { Mensagem = "Não foi encontrado um cliente com este ID"});
             }
         }
-
         [HttpGet("ObterPorNome/{nome}")]
         public IActionResult ObterPorCliente(string nome)
         {
             var cliente = _repository.ObterPorNome(nome);
             if (cliente is not null)
             {
-                return Ok(cliente);
+                var clienteDTO = new ObterClienteDTO(cliente)
+                return Ok(clienteDTO);
             }    
             else
             {
                 return NotFound(new { Mensagem = "Não foram encontrados clientes com este nome"});
             }
         }
-
         [HttpPut("AtualizarCliente/{id}")]
         public IActionResult AtualizarCliente(int id, AtualizarClienteDTO dto)
         {
@@ -73,7 +69,6 @@ namespace SistemaVendas.Controllers
                 return NotFound (new {Mensagem = "Não foi encontrado um cliente com este ID"});
             }
         }
-
         [HttpPatch("AtualizarSenha/{id}")]
         public IActionResult AtualizarSenha(int id, AtualizarSenhaClienteDTO dto)
         {
@@ -88,12 +83,10 @@ namespace SistemaVendas.Controllers
                 return NotFound(new { Mensagem = "Não foi encontrado um cliente com este ID"});
             }
         }
-
         [HttpDelete("DeletarCliente/{id}")]
         public IActionResult Deletar(int id)
         {
             var cliente = _repository.ObterPorId(id);
-            
             if (cliente is not null)
             {
                 _repository.DeletarPedido(cliente);

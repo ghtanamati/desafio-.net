@@ -10,13 +10,11 @@ namespace SistemaVendas.Controllers
     {
         public string Nome { get; set; }
         public string Login { get; set; }
-        public string Senha { get; set; }
 
         public ObterClienteDTO(Cliente cliente)
         {
             Nome = cliente.Nome;
             Login = cliente.Login;
-            Senha = cliente.Senha;
         }
     }
 }

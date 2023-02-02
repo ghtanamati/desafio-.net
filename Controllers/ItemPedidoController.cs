@@ -23,7 +23,7 @@ namespace SistemaVendas.Controllers
         {
             var itemPedido = new ItemPedido(dto);
             _repository.Cadastrar(itemPedido);
-            return Ok(dto);
+            return Ok(itemPedido);
         }
         [HttpGet("ObterPorServico/{idServico}")]
         public IActionResult ObterPorServico(int idServico)

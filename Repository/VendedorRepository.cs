@@ -46,6 +46,7 @@ namespace SistemaVendas.Repository
         {
             vendedor.Senha = dto.Senha;
             AtualizarVendedor(vendedor);
+            return vendedor;
         }
         public void DeletarVendedor(Vendedor vendedor)
         {

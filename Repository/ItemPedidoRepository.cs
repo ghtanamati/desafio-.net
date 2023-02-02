@@ -14,12 +14,10 @@ namespace SistemaVendas.Repository
     public class ItemPedidoRepository
     {
         private readonly VendasContext _context;
-
         public ItemPedidoRepository(VendasContext context)
         {
             _context = context;
         }
-
         public void Cadastrar(ItemPedido itemPedido)
         {
             _context.ItensPedidos.Add(itemPedido);
@@ -52,19 +50,18 @@ namespace SistemaVendas.Repository
             _context.SaveChanges();
             return itemPedido;
         }
-
         public void AtualizarQuantidade(ItemPedido itemPedido, AtualizarQtdeDTO dto)
         {
             itemPedido.Quantidade = dto.Quantidade;
             AtualizarItemPedido(itemPedido);
+            returm itemPedido;
         }
-
         public void AtualizarValor(ItemPedido itemPedido, AtualizarValorDTO dto)
         {
             itemPedido.Valor = dto.Valor;
             AtualizarItemPedido(itemPedido);
+            returm itemPedido;
         }
-
         public void DeletarItemPedido(ItemPedido itemPedido)
         {
             _context.ItensPedidos.Remove(itemPedido);

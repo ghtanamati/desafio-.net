@@ -13,12 +13,13 @@ namespace SistemaVendas.Controllers
     [Route("[controller]")]
     public class VendedorController : ControllerBase
     {
-        //Injeção de Dependência
+        //Injeção de Dependência (Start)
         private readonly VendedorRepository _repository;
         public VendedorController(VendedorRepository repository)
         {
             _repository = repository;
         }
+        //Injeção de Dependência (End)
         [HttpPost]
         public IActionResult Cadastrar(CadastrarVendedorDTO dto)
         {
@@ -26,12 +27,10 @@ namespace SistemaVendas.Controllers
             _repository.Cadastrar(vendedor);
             return Ok(vendedor);
         }
-
         [HttpGet("ObterPorID/{id}")]
         public IActionResult ObterPorId(int id)
         {
             var vendedor = _repository.ObterPorId(id);
-            
             if(vendedor is not null)
             {
                 var vendedorDTO = new ObterVendedorDTO(vendedor);
@@ -41,22 +40,21 @@ namespace SistemaVendas.Controllers
             {
                 return NotFound(new { Mensagem = "Não foi encontrado um vendedor com este id"});
             }
-        }
-        
+        } 
         [HttpGet("ObterPorNome/{nome}")]
         public IActionResult ObterPorNome(string nome)
         {
             var vendedores = _repository.ObterPorNome(nome);
             if(vendedores is not null)
             {
-                return Ok(vendedores);
+                var vendedorDTO = new ObterVendedorDTO(vendedor);
+                return Ok(vendedorDTO);
             }
             else
             {
                 return NotFound(new { Mensagem = "Não foram encontrados vendedores com este nome"});
             }
         }
-        
         [HttpPut("AtualizarVendedor/{id}")]
         public IActionResult Atualizar(int id, AtualizarVendedorDTO dto)
         {
@@ -73,7 +71,6 @@ namespace SistemaVendas.Controllers
                 return NotFound (new {Mensagem = "Não foi encontrado um vendedor com este ID"});
             }
         }
-
         [HttpPatch("AtualizarSenha/{id}")]
         public IActionResult AtualizarSenha(int id, AtualizarSenhaVendedorDTO dto)
         {
@@ -89,7 +86,6 @@ namespace SistemaVendas.Controllers
                 return NotFound(new { Mensagem = "Não foi encontrado um vendedor com este ID"});
             }
         }
-
         [HttpDelete("DeletarVendedor/{id}")]
         public IActionResult Deletar(int id)
         {

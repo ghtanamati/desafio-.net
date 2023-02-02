@@ -25,14 +25,12 @@ namespace SistemaVendas.Controllers
         {
             var pedido = new Pedido(dto);
             _repository.Cadastrar(pedido);
-            return Ok(dto);
+            return Ok(pedido);
         }
-
         [HttpGet("ObterPorID/{id}")]
         public IActionResult ObterPorId(int id)
         {
             var pedido = _repository.ObterPorId(id);
-            
             if (pedido is not null)
             {
                 return Ok(pedido);
@@ -42,11 +40,10 @@ namespace SistemaVendas.Controllers
                 return NotFound(new { Mensagem = "Não foi encontrado um pedido com este ID"});
             }
         }
-
-        [HttpGet("ObterPorCliente/{cliente}")]
-        public IActionResult ObterPorCliente(string cliente)
+        [HttpGet("ObterPorCliente/{idCliente}")]
+        public IActionResult ObterPorCliente(int idCliente)
         {
-            var pedido = _repository.ObterPorCliente(cliente);            
+            var pedido = _repository.ObterPorCliente(idCliente);            
             if (pedido is not null)
             {
                 return Ok(pedido);
@@ -56,11 +53,10 @@ namespace SistemaVendas.Controllers
                 return NotFound(new { Mensagem = "Não foram encontrados pedidos deste cliente"});
             }
         }
-
-        [HttpGet("ObterPorVendedor/{vendedor}")]
-        public IActionResult ObterPorVendedor(string vendedor)
+        [HttpGet("ObterPorVendedor/{idVendedor}")]
+        public IActionResult ObterPorVendedor(int idVendedor)
         {
-            var pedido = _repository.ObterPorVendedor(vendedor);            
+            var pedido = _repository.ObterPorVendedor(idVendedor);            
             if (pedido is not null)
             {
                 return Ok(pedido);
@@ -86,7 +82,6 @@ namespace SistemaVendas.Controllers
                 return NotFound (new {Mensagem = "Não foi encontrado um pedido com este ID"});
             }
         }
-
         [HttpPatch("AtualizarVendedor/{id}")]
         public IActionResult AtualizarVendedor(int id, AtualizarVendedorDoPedidoDTO dto)
         {
@@ -101,7 +96,6 @@ namespace SistemaVendas.Controllers
                 return NotFound(new { Mensagem = "Não foi encontrado um pedido com este ID"});
             }
         }
-
         [HttpDelete("DeletarPedido/{id}")]
         public IActionResult Deletar(int id)
         {

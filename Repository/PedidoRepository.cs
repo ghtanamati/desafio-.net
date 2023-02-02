@@ -17,13 +17,10 @@ namespace SistemaVendas.Repository
         {
             _context = context;
         }
-
         public Pedido Cadastrar(Pedido pedido)
         {
             _context.Pedidos.Add(pedido);
             _context.SaveChanges();
-
-            return pedido;
         }
         public Pedido ObterPorId(int id)
         {
@@ -32,18 +29,18 @@ namespace SistemaVendas.Repository
                                          .FirstOrDefault(x => x.Id == id);
             return pedido;
         }
-        public Pedido ObterPorCliente(string cliente)
+        public Pedido ObterPorCliente(int idCliente)
         {
             var pedido = _context.Pedidos.Include(x => x.Vendedor)
                                          .Include(x => x.Cliente)
-                                         .FirstOrDefault(x => x.Cliente.Nome == cliente);
+                                         .FirstOrDefault(x => x.Cliente.Id == idCliente);
             return pedido;
         }
-        public Pedido ObterPorVendedor(string vendedor)
+        public Pedido ObterPorVendedor(int idVendedor)
         {
             var pedido = _context.Pedidos.Include(x => x.Vendedor)
                                          .Include(x => x.Cliente)
-                                         .FirstOrDefault(x => x.Vendedor.Nome == vendedor);
+                                         .FirstOrDefault(x => x.Vendedor.Id == idVendedor);
             return pedido;
         }
         public Pedido AtualizarPedido(Pedido pedido)
@@ -56,6 +53,7 @@ namespace SistemaVendas.Repository
         {
             pedido.VendedorId = dto.VendedorId;
             AtualizarPedido(pedido);
+            return pedido;
         }
 
         public void DeletarPedido(Pedido pedido)
