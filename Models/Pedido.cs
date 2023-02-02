@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SistemaVendas.Dto;
+using SistemaVendas.Controllers;
 
 namespace SistemaVendas.Models
 {

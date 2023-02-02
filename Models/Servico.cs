@@ -13,7 +13,6 @@ namespace SistemaVendas.Models
         public string Descricao { get; set; }
         public Servico()
         {
-            
         }
         public Servico(CadastrarServicoDTO dto)
         {

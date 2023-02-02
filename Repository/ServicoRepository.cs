@@ -44,15 +44,12 @@ namespace SistemaVendas.Repository
         {
             servico.Nome = dto.Nome;
             AtualizarServico(servico);
-            return servico;
         }
         public void AtualizarDescricao(Servico servico, AtualizarDescricaoServicoDTO dto)
         {
             servico.Descricao = dto.Descricao;
             AtualizarServico(servico);
-            return servico;
         }
-
         public void DeletarServico(Servico servico)
         {
             _context.Servicos.Remove(servico);

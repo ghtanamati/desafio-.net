@@ -47,8 +47,7 @@ namespace SistemaVendas.Controllers
             var vendedores = _repository.ObterPorNome(nome);
             if(vendedores is not null)
             {
-                var vendedorDTO = new ObterVendedorDTO(vendedor);
-                return Ok(vendedorDTO);
+                return Ok(vendedores);
             }
             else
             {
@@ -59,7 +58,6 @@ namespace SistemaVendas.Controllers
         public IActionResult Atualizar(int id, AtualizarVendedorDTO dto)
         {
             var vendedor = _repository.ObterPorId(id);
-
             if (vendedor is not null)
             {
                 vendedor.MapearAtualizarVendedor(dto);

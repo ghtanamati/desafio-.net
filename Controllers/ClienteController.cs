@@ -31,7 +31,7 @@ namespace SistemaVendas.Controllers
             var cliente = _repository.ObterPorId(id);
             if (cliente is not null)
             {
-                var clienteDTO = new ObterClienteDTO(cliente)
+                var clienteDTO = new ObterClienteDTO(cliente);
                 return Ok(clienteDTO);
             }    
             else
@@ -45,8 +45,7 @@ namespace SistemaVendas.Controllers
             var cliente = _repository.ObterPorNome(nome);
             if (cliente is not null)
             {
-                var clienteDTO = new ObterClienteDTO(cliente)
-                return Ok(clienteDTO);
+                return Ok(cliente);
             }    
             else
             {

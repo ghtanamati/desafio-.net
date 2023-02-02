@@ -17,30 +17,30 @@ namespace SistemaVendas.Repository
         {
             _context = context;
         }
-        public Pedido Cadastrar(Pedido pedido)
+        public void Cadastrar(Pedido pedido)
         {
             _context.Pedidos.Add(pedido);
             _context.SaveChanges();
         }
         public Pedido ObterPorId(int id)
         {
-            var pedido = _context.Pedidos.Include(x => x.Vendedor)
-                                         .Include(x => x.Cliente)
+            var pedido = _context.Pedidos.Include(x => x.Cliente)
+                                         .Include(x => x.Vendedor)
                                          .FirstOrDefault(x => x.Id == id);
             return pedido;
         }
         public Pedido ObterPorCliente(int idCliente)
         {
-            var pedido = _context.Pedidos.Include(x => x.Vendedor)
-                                         .Include(x => x.Cliente)
-                                         .FirstOrDefault(x => x.Cliente.Id == idCliente);
+            var pedido = _context.Pedidos.Include(x => x.Cliente)
+                                         .Include(x => x.Vendedor)
+                                         .FirstOrDefault(x => x.Id == idCliente);
             return pedido;
         }
-        public Pedido ObterPorVendedor(int idVendedor)
+        public Cliente ObterPorVendedor(int idVendedor)
         {
-            var pedido = _context.Pedidos.Include(x => x.Vendedor)
-                                         .Include(x => x.Cliente)
-                                         .FirstOrDefault(x => x.Vendedor.Id == idVendedor);
+            var pedido = _context.Pedidos.Include(x => x.Cliente)
+                                          .Include(x => x.Vendedor)
+                                          .FirstOrDefault(x => x.Id == idVendedor);
             return pedido;
         }
         public Pedido AtualizarPedido(Pedido pedido)
@@ -53,9 +53,7 @@ namespace SistemaVendas.Repository
         {
             pedido.VendedorId = dto.VendedorId;
             AtualizarPedido(pedido);
-            return pedido;
         }
-
         public void DeletarPedido(Pedido pedido)
         {
             _context.Pedidos.Remove(pedido);

@@ -31,16 +31,16 @@ namespace SistemaVendas.Repository
         public List<ObterItemPedidoDTO> ObterPorServico(int idServico)
         {
             var itensPedido = _context.ItensPedidos.Where(x => x.Servico.Id == idServico)
-                                                  .Select(x => new ObterItemPedidoDTO(x))
-                                                  .ToList();
+                                                    .Select(x => new ObterItemPedidoDTO(x))
+                                                    .ToList();
             
             return itensPedido;
         }
         public List<ObterItemPedidoDTO> ObterPorPedido(int idPedido)
         {
             var itensPedido = _context.ItensPedidos.Where(x => x.Pedido.Id == idPedido)
-                                                  .Select(x => new ObterItemPedidoDTO(x))
-                                                  .ToList();
+                                                    .Select(x => new ObterItemPedidoDTO(x))
+                                                    .ToList();
             
             return itensPedido;
         }
@@ -54,13 +54,11 @@ namespace SistemaVendas.Repository
         {
             itemPedido.Quantidade = dto.Quantidade;
             AtualizarItemPedido(itemPedido);
-            returm itemPedido;
         }
         public void AtualizarValor(ItemPedido itemPedido, AtualizarValorDTO dto)
         {
             itemPedido.Valor = dto.Valor;
             AtualizarItemPedido(itemPedido);
-            returm itemPedido;
         }
         public void DeletarItemPedido(ItemPedido itemPedido)
         {
