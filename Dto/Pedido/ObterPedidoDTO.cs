@@ -9,12 +9,19 @@ namespace SistemaVendas.Dto
 {
     public class ObterPedidoDTO
     {
-        /*
-        public string nomeCliente { get; set; }
-        public string nomeVendedor { get; set; }
+        public int Id {get; set;}
+        public DateTime Data {get;set;}
+        public ObterClienteDTO Cliente {get;set;}
+        public ObterVendedorDTO Vendedor {get;set;}
         public ObterPedidoDTO()
         {
         }
-        */
+        public ObterPedidoDTO(Pedido pedido)
+        {
+            Id = pedido.Id;
+            Data = pedido.Data;
+            Cliente = new ObterClienteDTO(pedido.Cliente);
+            Vendedor = new ObterVendedorDTO(pedido.Vendedor);
+        }
     }
 }

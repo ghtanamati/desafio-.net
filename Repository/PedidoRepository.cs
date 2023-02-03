@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaVendas.Context;
+using SistemaVendas.Controllers;
 using SistemaVendas.Dto;
 using SistemaVendas.Models;
 
@@ -26,7 +27,7 @@ namespace SistemaVendas.Repository
         {
             var pedido = _context.Pedidos.Include(x => x.Cliente)
                                          .Include(x => x.Vendedor)
-                                         .FirstOrDefault(x => x.Id == id);
+                                         .FirstOrDefault(x => x.Id == id);      
             return pedido;
         }
         public Pedido ObterPorCliente(int idCliente)
@@ -36,7 +37,7 @@ namespace SistemaVendas.Repository
                                          .FirstOrDefault(x => x.Id == idCliente);
             return pedido;
         }
-        public Cliente ObterPorVendedor(int idVendedor)
+        public Pedido ObterPorVendedor(int idVendedor)
         {
             var pedido = _context.Pedidos.Include(x => x.Cliente)
                                           .Include(x => x.Vendedor)

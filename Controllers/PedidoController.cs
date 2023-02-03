@@ -31,9 +31,10 @@ namespace SistemaVendas.Controllers
         public IActionResult ObterPorId(int id)
         {
             var pedido = _repository.ObterPorId(id);
-            if (pedido is not null)
+            var pedidoFront = new ObterPedidoDTO(pedido);
+            if (pedidoFront is not null)
             {
-                return Ok(pedido);
+                return Ok(pedidoFront);
             }    
             else
             {
@@ -43,10 +44,11 @@ namespace SistemaVendas.Controllers
         [HttpGet("ObterPorCliente/{idCliente}")]
         public IActionResult ObterPorCliente(int idCliente)
         {
-            var pedido = _repository.ObterPorCliente(idCliente);            
-            if (pedido is not null)
+            var pedido = _repository.ObterPorCliente(idCliente);
+            var pedidoFront = new ObterPedidoDTO(pedido);
+            if (pedidoFront is not null)
             {
-                return Ok(pedido);
+                return Ok(pedidoFront);
             }    
             else
             {
@@ -56,17 +58,17 @@ namespace SistemaVendas.Controllers
         [HttpGet("ObterPorVendedor/{idVendedor}")]
         public IActionResult ObterPorVendedor(int idVendedor)
         {
-            var pedido = _repository.ObterPorVendedor(idVendedor);            
-            if (pedido is not null)
+            var pedido = _repository.ObterPorVendedor(idVendedor);   
+            var pedidoFront = new ObterPedidoDTO(pedido);
+            if (pedidoFront is not null)
             {
-                return Ok(pedido);
+                return Ok(pedidoFront);
             }    
             else
             {
                 return NotFound(new { Mensagem = "Não foram encontrados pedidos deste vendedor"});
             }
         }
-
         [HttpPut("AtualizarPedido/{id}")]
         public IActionResult AtualizarPedido(int id, AtualizarPedidoDTO dto)
         {
